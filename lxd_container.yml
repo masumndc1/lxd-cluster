@@ -1,0 +1,28 @@
+---
+- name: Create a started centos7-ansible1 container
+  lxd_container:
+    name: centos7-ansible1
+    state: started
+    source:
+      type: image
+      mode: pull
+      server: https://images.linuxcontainers.org
+      protocol: lxd
+      fingerprint: 07059892f7c3
+    profiles: ["default"]
+    wait_for_ipv4_addresses: true
+    timeout: 600
+
+- name: Create a started centos7-ansible2 container
+  lxd_container:
+    name: centos7-ansible2
+    state: started
+    source:
+      type: image
+      mode: pull
+      server: https://images.linuxcontainers.org
+      protocol: lxd
+      alias: centos/7/amd64
+    profiles: ["default"]
+    wait_for_ipv4_addresses: true
+    timeout: 600

@@ -1,0 +1,10 @@
+---
+- hosts: centos7
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Installing the common packages
+      yum: name={{ item }} state=latest
+      with_items: "{{ package }}"
+      when: ansible_distribution == "CentOS"

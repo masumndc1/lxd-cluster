@@ -1,0 +1,17 @@
+---
+- hosts: python
+  become: yes
+  gather_facts: yes
+  ignore_errors: yes
+
+  tasks:
+    - name: install the ius-release rpm from a remote repo for python3.6
+      yum:
+        name: "{{ ius_release_url }}"
+        state: present
+      when: ansible_distribution == "CentOS"
+
+    - name: Installing the python3.6 related packages
+      yum: name={{ item }} state=latest
+      with_items: "{{ package }}"
+      when: ansible_distribution == "CentOS"

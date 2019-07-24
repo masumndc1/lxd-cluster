@@ -1,0 +1,21 @@
+---
+- hosts: localhost
+  become: yes
+  gather_facts: yes
+
+  tasks:
+  - name: install common packages to localhost
+    yum:
+      name: "{{ item }}"
+      state: latest
+    with_items: "{{ rpm_package }}"
+    when: ansible_distribution == "CentOS"
+   
+  - name: Install lxd in localhost
+    include: lxd_install.yml
+  
+  - name: Download and run lxd containers
+    include: lxd_container.yml
+
+  - name: install salt-master and salt-minion to localhost
+    include: salt-master-install.yml

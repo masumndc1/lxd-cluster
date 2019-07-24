@@ -1,0 +1,7 @@
+---
+ius_release_url: https://centos7.iuscommunity.org/ius-release.rpm
+package:
+  - python36u
+  - python36u-libs
+  - python36u-devel
+  - python36u-pip

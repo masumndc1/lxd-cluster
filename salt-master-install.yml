@@ -1,0 +1,14 @@
+---
+- name: install salt repo
+  yum:
+    name: https://repo.saltstack.com/yum/redhat/salt-repo-latest.el7.noarch.rpm
+    state: latest
+  when: ansible_distribution == "CentOS"
+
+- name: install salt-master and salt-minion
+  yum:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items: "{{ salt_package }}"
+  when: ansible_distribution == "CentOS"

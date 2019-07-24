@@ -1,0 +1,5 @@
+---
+salt_minion_package:
+  - salt-minion
+  - salt-ssh
+  - salt-syndic

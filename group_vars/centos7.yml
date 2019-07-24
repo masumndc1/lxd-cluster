@@ -1,0 +1,8 @@
+---
+package:
+  - wget
+  - git
+  - epel-release
+  - ansible
+  - htop
+  - iftop

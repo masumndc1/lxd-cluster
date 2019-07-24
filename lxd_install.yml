@@ -1,0 +1,36 @@
+---
+- name: Install snapd
+  yum:
+    name: [ 'epel-release' , 'snapd']
+    state: latest
+
+- name: Creating a link for snap
+  file: 
+    src: /var/lib/snapd/snap
+    dest: /snap
+    owner: root
+    group: root
+    state: link
+    
+- name: Install lxd using snapd
+  snap:
+    name: lxd 
+
+- name: Adding a user into lxd group
+  user:
+    name: masum
+    groups: lxd
+ 
+- name: Run some grubby related commands
+  shell: |
+    grubby --args="user_namespace.enable=1" --update-kernel="$(grubby --default-kernel)"
+    grubby --args="namespace.unpriv_enable=1" --update-kernel="$(grubby --default-kernel)"
+    echo "user.max_user_namespaces=3883" > /etc/sysctl.d/99-userns.conf
+#    argv:
+#      - creates: /etc/sysctl.d/99-userns.conf
+
+- name: Making sure snapd service is running
+  service:
+    name: snapd
+    state: started
+    enabled: yes
