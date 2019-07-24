@@ -1,4 +1,5 @@
 #!/bin/bash
+# this file will be tested later
 
 if [ ! -f /etc/sysctl.d/99-userns.conf ] ; then
    grubby --args="user_namespace.enable=1" --update-kernel="$(grubby --default-kernel)"
