@@ -36,5 +36,5 @@
 #      - creates: /etc/sysctl.d/99-userns.conf
 
 - debug: 
-    msg: "Try to run lxd init as root"
+    msg: "Run lxd init as root if tasks fails due to lxd"
 
