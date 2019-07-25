@@ -35,3 +35,22 @@
 #    argv:
 #      - creates: /etc/sysctl.d/99-userns.conf
 
+- name: initialize lxd
+  command: lxd init
+  responses:
+    Question:
+      - no
+      - yes
+      - default
+      - lvm
+      - yes
+      - no
+      - 15GB
+      - no
+      - yes
+      - lxdbr0
+      - auto
+      - auto
+      - no
+      - yes
+      - no
