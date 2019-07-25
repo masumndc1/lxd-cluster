@@ -21,6 +21,12 @@
     name: masum
     groups: lxd
  
+- name: Making sure snapd service is running
+  service:
+    name: snapd
+    state: started
+    enabled: yes
+
 - name: Run some grubby related commands
   shell: |
     grubby --args="user_namespace.enable=1" --update-kernel="$(grubby --default-kernel)"
@@ -29,8 +35,3 @@
 #    argv:
 #      - creates: /etc/sysctl.d/99-userns.conf
 
-- name: Making sure snapd service is running
-  service:
-    name: snapd
-    state: started
-    enabled: yes
