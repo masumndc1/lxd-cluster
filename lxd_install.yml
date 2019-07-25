@@ -35,9 +35,14 @@
 #    argv:
 #      - creates: /etc/sysctl.d/99-userns.conf
 
+- name: Installing pexpect using pip
+  pip: 
+    name: pexpect
+    state: present 
+
 - name: initialize lxd
   expect:
-    command: lxd init
+    command: /snap/bin/lxd init
     responses:
       Question:
         - no
