@@ -138,3 +138,18 @@
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
+
+- name: Create a started ubuntu18-python1 container
+  lxd_container:
+    name: ubuntu18-python1
+    state: started
+    source:
+      type: image
+      mode: pull
+      server: https://images.linuxcontainers.org
+      protocol: lxd
+      fingerprint: e29737810d07
+    profiles: ["default"]
+    wait_for_ipv4_addresses: true
+    timeout: 600
+  tag: ubuntu18-python1
