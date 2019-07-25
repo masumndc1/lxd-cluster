@@ -1,14 +1,56 @@
 ---
-- name: Create a started centos7-ansible1 container
+- name: Create a started centos7-python1 container
   lxd_container:
-    name: centos7-ansible1
+    name: centos7-python1
     state: started
     source:
       type: image
       mode: pull
       server: https://images.linuxcontainers.org
       protocol: lxd
-      fingerprint: 07059892f7c3
+      fingerprint: 49d3e44003e5
+    profiles: ["default"]
+    wait_for_ipv4_addresses: true
+    timeout: 600
+
+- name: Create a started centos7-python2 container
+  lxd_container:
+    name: centos7-python2
+    state: started
+    source:
+      type: image
+      mode: pull
+      server: https://images.linuxcontainers.org
+      protocol: lxd
+      fingerprint: 49d3e44003e5
+    profiles: ["default"]
+    wait_for_ipv4_addresses: true
+    timeout: 600
+
+- name: Create a started centos7-puppet-node1 container
+  lxd_container:
+    name: centos7-puppet-node1
+    state: started
+    source:
+      type: image
+      mode: pull
+      server: https://images.linuxcontainers.org
+      protocol: lxd
+      fingerprint: 49d3e44003e5
+    profiles: ["default"]
+    wait_for_ipv4_addresses: true
+    timeout: 600
+
+- name: Create a started centos7-puppet-node2 container
+  lxd_container:
+    name: centos7-puppet-node2
+    state: started
+    source:
+      type: image
+      mode: pull
+      server: https://images.linuxcontainers.org
+      protocol: lxd
+      fingerprint: 49d3e44003e5
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
@@ -23,6 +65,76 @@
       server: https://images.linuxcontainers.org
       protocol: lxd
       alias: centos/7/amd64
+    profiles: ["default"]
+    wait_for_ipv4_addresses: true
+    timeout: 600
+
+- name: Create a started centos7-ansible1 container
+  lxd_container:
+    name: centos7-ansible1
+    state: started
+    source:
+      type: image
+      mode: pull
+      server: https://images.linuxcontainers.org
+      protocol: lxd
+      fingerprint: 49d3e44003e5
+    profiles: ["default"]
+    wait_for_ipv4_addresses: true
+    timeout: 600
+
+- name: Create a started centos7-salt-minion1 container
+  lxd_container:
+    name: centos7-salt-minion1
+    state: started
+    source:
+      type: image
+      mode: pull
+      server: https://images.linuxcontainers.org
+      protocol: lxd
+      fingerprint: 49d3e44003e5
+    profiles: ["default"]
+    wait_for_ipv4_addresses: true
+    timeout: 600
+
+- name: Create a started centos7-salt-minion2 container
+  lxd_container:
+    name: centos7-salt-minion2
+    state: started
+    source:
+      type: image
+      mode: pull
+      server: https://images.linuxcontainers.org
+      protocol: lxd
+      fingerprint: 49d3e44003e5
+    profiles: ["default"]
+    wait_for_ipv4_addresses: true
+    timeout: 600
+
+- name: Create a started archlinux1 container
+  lxd_container:
+    name: archlinux1
+    state: started
+    source:
+      type: image
+      mode: pull
+      server: https://images.linuxcontainers.org
+      protocol: lxd
+      fingerprint: 8b8a61073789
+    profiles: ["default"]
+    wait_for_ipv4_addresses: true
+    timeout: 600
+
+- name: Create a started debian9-salt-minion3 container
+  lxd_container:
+    name: debian9-salt-minion3
+    state: started
+    source:
+      type: image
+      mode: pull
+      server: https://images.linuxcontainers.org
+      protocol: lxd
+      fingerprint: ba31171d147b
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
