@@ -7,6 +7,7 @@ debian
 python
 puppet
 salt
+ubuntu
 
 [lxd:vars]
 ansible_connection=lxd
@@ -39,5 +40,8 @@ debian9-salt-minion3
 [puppet]
 centos7-puppet-node1
 centos7-puppet-node2
+
+[ubuntu]
+ubuntu18-python1
 
 localhost ansible_connection=local
