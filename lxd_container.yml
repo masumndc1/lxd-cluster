@@ -152,4 +152,4 @@
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
-  tag: ubuntu18-python1
+  tags: ubuntu18-python1
