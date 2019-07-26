@@ -120,7 +120,7 @@
       mode: pull
       server: https://images.linuxcontainers.org
       protocol: lxd
-      fingerprint: 8b8a61073789
+      fingerprint: 601a7b252fa6
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
