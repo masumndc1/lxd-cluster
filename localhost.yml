@@ -2,6 +2,7 @@
 - hosts: localhost
   become: yes
   gather_facts: yes
+  ignore_errors: yes
 
   tasks:
   - name: install common packages to localhost
