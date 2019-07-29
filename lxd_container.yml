@@ -8,7 +8,7 @@
       mode: pull
       server: https://images.linuxcontainers.org
       protocol: lxd
-      fingerprint: 49d3e44003e5
+      alias: centos/7/amd64
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
@@ -22,7 +22,7 @@
       mode: pull
       server: https://images.linuxcontainers.org
       protocol: lxd
-      fingerprint: 49d3e44003e5
+      alias: centos/7/amd64
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
@@ -36,7 +36,7 @@
       mode: pull
       server: https://images.linuxcontainers.org
       protocol: lxd
-      fingerprint: 49d3e44003e5
+      alias: centos/7/amd64
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
@@ -50,7 +50,7 @@
       mode: pull
       server: https://images.linuxcontainers.org
       protocol: lxd
-      fingerprint: 49d3e44003e5
+      alias: centos/7/amd64
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
@@ -78,7 +78,7 @@
       mode: pull
       server: https://images.linuxcontainers.org
       protocol: lxd
-      fingerprint: 49d3e44003e5
+      alias: centos/7/amd64
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
@@ -92,7 +92,7 @@
       mode: pull
       server: https://images.linuxcontainers.org
       protocol: lxd
-      fingerprint: 49d3e44003e5
+      alias: centos/7/amd64
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
@@ -106,7 +106,7 @@
       mode: pull
       server: https://images.linuxcontainers.org
       protocol: lxd
-      fingerprint: 49d3e44003e5
+      alias: centos/7/amd64
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
@@ -120,7 +120,6 @@
       mode: pull
       server: https://images.linuxcontainers.org
       protocol: lxd
-      fingerprint: 601a7b252fa6
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
