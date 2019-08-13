@@ -17,6 +17,7 @@
   
   - name: Download and run lxd containers
     include: lxd_container.yml
+    tags: lxd_container
 
   - name: install salt-master and salt-minion to localhost
     include: salt-master-install.yml
