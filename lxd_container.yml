@@ -120,6 +120,7 @@
       mode: pull
       server: https://images.linuxcontainers.org
       protocol: lxd
+      alias: archlinux/current/amd64
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
@@ -133,7 +134,7 @@
       mode: pull
       server: https://images.linuxcontainers.org
       protocol: lxd
-      fingerprint: ba31171d147b
+      alias: debian/stretch/amd64
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
@@ -147,8 +148,9 @@
       mode: pull
       server: https://images.linuxcontainers.org
       protocol: lxd
-      fingerprint: e29737810d07
+      alias: ubuntu/xenial/amd64
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
   tags: ubuntu18-python1
+
