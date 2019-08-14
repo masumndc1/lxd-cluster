@@ -18,6 +18,12 @@
       with_items: "{{ salt_package }}"
       when: ansible_distribution == "CentOS"
 
+    - name: Run the salt-minion service
+      service:
+        name: salt-master
+        enabled: true
+        state: started
+
 - hosts: salt
   become: yes
   gather_facts: yes
