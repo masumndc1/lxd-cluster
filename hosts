@@ -1,0 +1,8 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+# lxd hosts
+10.247.100.139 centos7-salt-minion2
+10.247.100.140 centos7-salt-minion1
+10.247.100.223 debian9-salt-minion3
+10.247.100.1   salt

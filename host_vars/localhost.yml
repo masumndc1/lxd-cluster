@@ -13,7 +13,6 @@ rpm_package:
 
 salt_package:
   - salt-master
-  - salt-minion
   - salt-ssh
   - salt-syndic
   - salt-cloud

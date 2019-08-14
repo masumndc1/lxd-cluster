@@ -1,3 +1,5 @@
+localhost ansible_connection=local
+
 [all]
 
 [lxd:children]
@@ -16,7 +18,7 @@ ansible_connection=lxd
 ansible
 python
 puppet
-salt
+salt-centos
 
 [ansible]
 centos7-ansible1
@@ -32,7 +34,15 @@ debian9-salt-minion3
 centos7-python1
 centos7-python2
 
-[salt]
+[salt:children]
+salt-centos
+salt-minion
+
+[salt-centos]
+centos7-salt-minion1
+centos7-salt-minion2
+
+[salt-minion]
 centos7-salt-minion1
 centos7-salt-minion2
 debian9-salt-minion3
@@ -44,4 +54,3 @@ centos7-puppet-node2
 [ubuntu]
 ubuntu18-python1
 
-localhost ansible_connection=local
