@@ -83,6 +83,34 @@
     wait_for_ipv4_addresses: true
     timeout: 600
 
+- name: Create a started centos7-salt-minion1 container
+  lxd_container:
+    name: centos7-salt-minion1
+    state: started
+    source:
+      type: image
+      mode: pull
+      server: https://images.linuxcontainers.org
+      protocol: lxd
+      alias: centos/7/amd64
+    profiles: ["default"]
+    wait_for_ipv4_addresses: true
+    timeout: 600
+
+ - name: Create a started centos7-salt-minion2 container
+  lxd_container:
+    name: centos7-salt-minion2
+    state: started
+    source:
+      type: image
+      mode: pull
+      server: https://images.linuxcontainers.org
+      protocol: lxd
+      alias: centos/7/amd64
+    profiles: ["default"]
+    wait_for_ipv4_addresses: true
+    timeout: 600
+    
 - name: Create a started archlinux1 container
   lxd_container:
     name: archlinux1
@@ -111,4 +139,3 @@
     wait_for_ipv4_addresses: true
     timeout: 600
   tags: ubuntu18-python1
-
