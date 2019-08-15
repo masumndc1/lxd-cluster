@@ -37,3 +37,4 @@
         state: latest
       with_items: "{{ salt_minion_pkg }}"
       when: ansible_distribution == "Debian"
+     
