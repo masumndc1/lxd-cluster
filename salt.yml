@@ -10,7 +10,20 @@
         state: latest
       when: ansible_distribution == "CentOS"
 
-    - name: install salt-master only in localhost
+    - name: Add salt key for Debian
+      apt_key:
+        url: "{{ salt_repo_url }}"
+        state: present
+      when: ansible_distribution == "Debian"
+
+    - name: Add salt repo for debian or Ubuntu
+      apt_repository:
+        repo: deb http://repo.saltstack.com/apt/debian/9/amd64/latest stretch main
+        state: present
+        filename: saltstack 
+      when: ansible_distribution == "Debian"
+   
+    - name: install salt-master 
       yum:
         name: "{{ item }}"
         state: latest
@@ -18,44 +31,6 @@
       with_items: "{{ salt_package }}"
       when: ansible_distribution == "CentOS"
 
-    - name: Run the salt-minion service
-      service:
-        name: salt-master
-        enabled: true
-        state: started
-
-- hosts: salt
-  become: yes
-  gather_facts: yes
-
-  tasks:
-    - name: install salt repo
-      yum:
-        name: https://repo.saltstack.com/yum/redhat/salt-repo-latest.el7.noarch.rpm
-        state: latest
-      when: ansible_distribution == "CentOS"
-
-    - name: install salt-minion
-      yum:
-        name: "{{ item }}"
-        state: latest
-        update_cache: yes
-      with_items: "{{ salt_minion_package }}"
-      when: ansible_distribution == "CentOS"
-
-    - name: Add salt repo key for Debian
-      apt_key:
-        url: "{{ salt_repo_url }}"
-        state: present
-      when: ansible_distribution == "Debian"
-
-    - name: Add salt repo
-      apt_repository:
-        repo: deb http://repo.saltstack.com/apt/debian/9/amd64/latest stretch main
-        state: present
-        filename: saltstack 
-      when: ansible_distribution == "Debian"
-   
     - name: Install salt-minion debian package
       apt:
         name: "{{ item }}"
@@ -63,11 +38,25 @@
       with_items: "{{ salt_minion_pkg }}"
       when: ansible_distribution == "Debian"
 
+    - name: install salt-minion for centos
+      yum:
+        name: "{{ item }}"
+        state: latest
+        update_cache: yes
+      with_items: "{{ salt_minion_package }}"
+      when: ansible_distribution == "CentOS"
+
+    - name: Run the salt-master service
+      service:
+        name: salt-master
+        enabled: true
+        state: started
+
     - name: Run the salt-minion service
       service:
         name: salt-minion
         enabled: true
         state: started
-      
+
       tags:
         - salt

@@ -18,6 +18,9 @@ salt_package:
   - salt-cloud
   - salt-api
 
+salt_minion_package:
+  - salt-minion
+
 deb_package:
   - git
   - ansible
