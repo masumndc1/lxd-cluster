@@ -1,0 +1,32 @@
+---
+- hosts: lxd
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Add key for ansible from a ubuntu keyserver
+      apt_key:
+        keyserver: "{{ ubuntu_keyserver }}"
+        id: "{{ ansible_key_id }}"
+      when: ansible_distribution == "Debian"
+
+    - name: Installing the common packages on deb type systems
+      apt: 
+        name: "{{ item }}" 
+        state: latest 
+        update_cache: yes
+      with_items: "{{ common_pkg }}"
+      when: ansible_distribution == "Debian"
+
+    - name: Installing the common packages
+      yum: name={{ item }} state=latest
+      with_items: "{{ package }}"
+      when: ansible_distribution == "CentOS"
+ 
+    - name: Copy hosts file into /etc/hosts in container
+      copy:
+        src: hosts
+        dest: /etc/hosts
+
+      tags: 
+        - common

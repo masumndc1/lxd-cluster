@@ -1,7 +1,9 @@
 ---
 - include: localhost.yml
-- include: centos-common-package.yml
-- include: debian-common-package.yml
+- include: common-package.yml
+#- include: centos-common-package.yml
+#- include: debian-common-package.yml
 #- include: ansible-install.yml
 - include: centos-python-install.yml
-- include: salt-minion-install.yml
+#- include: salt-minion-install.yml
+- include: salt.yml

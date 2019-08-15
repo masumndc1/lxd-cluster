@@ -1,4 +1,29 @@
 ---
+- hosts: localhost
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: install salt repo
+      yum:
+        name: https://repo.saltstack.com/yum/redhat/salt-repo-latest.el7.noarch.rpm
+        state: latest
+      when: ansible_distribution == "CentOS"
+
+    - name: install salt-master only in localhost
+      yum:
+        name: "{{ item }}"
+        state: latest
+        update_cache: yes
+      with_items: "{{ salt_package }}"
+      when: ansible_distribution == "CentOS"
+
+    - name: Run the salt-minion service
+      service:
+        name: salt-master
+        enabled: true
+        state: started
+
 - hosts: salt
   become: yes
   gather_facts: yes
@@ -37,9 +62,6 @@
         state: latest
       with_items: "{{ salt_minion_pkg }}"
       when: ansible_distribution == "Debian"
-<<<<<<< HEAD
-     
-=======
 
     - name: Run the salt-minion service
       service:
@@ -49,4 +71,3 @@
       
       tags:
         - salt
->>>>>>> 05a965c9c7c10e5d8e0d37de739435064cf50daf
