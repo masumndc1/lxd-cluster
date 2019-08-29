@@ -54,6 +54,6 @@
 - name: Make sure lxd service is up
   service: 
     name: lxd
-    state: running
+    state: started
     enabled: yes
   when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
