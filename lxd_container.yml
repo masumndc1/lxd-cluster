@@ -97,7 +97,7 @@
     wait_for_ipv4_addresses: true
     timeout: 600
 
- - name: Create a started centos7-salt-minion2 container
+- name: Create a started centos7-salt-minion2 container
   lxd_container:
     name: centos7-salt-minion2
     state: started
