@@ -3,6 +3,7 @@
   yum:
     name: [ 'epel-release' , 'snapd']
     state: latest
+  when: ansible_distribution == "Centos"
 
 - name: Creating a link for snap
   file: 
@@ -11,21 +12,25 @@
     owner: root
     group: root
     state: link
+  when: ansible_distribution == "Centos"
     
 - name: Install lxd using snapd
   snap:
     name: lxd 
+  when: ansible_distribution == "Centos"
 
 - name: Adding a user into lxd group
   user:
     name: masum
     groups: lxd
- 
+  when: ansible_distribution == "Centos"
+
 - name: Making sure snapd service is running
   service:
     name: snapd
     state: started
     enabled: yes
+  when: ansible_distribution == "Centos"
 
 - name: Run some grubby related commands
   shell: |
@@ -34,7 +39,21 @@
     echo "user.max_user_namespaces=3883" > /etc/sysctl.d/99-userns.conf
 #    argv:
 #      - creates: /etc/sysctl.d/99-userns.conf
+  when: ansible_distribution == "Centos"
 
 - debug: 
     msg: "Run lxd init as root if tasks fails due to lxd"
+  when: ansible_distribution == "Centos"
 
+- name: Install ansible in Debian based systems.
+  apt:
+    name: lxd
+    state: latest
+  when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+
+- name: Make sure lxd service is up
+  service: 
+    name: lxd
+    state: running
+    enabled: yes
+  when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"

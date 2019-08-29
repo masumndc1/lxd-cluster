@@ -11,6 +11,12 @@
       state: latest
     with_items: "{{ rpm_package }}"
     when: ansible_distribution == "CentOS"
+  
+    apt:
+      name: "{{ item }}"
+      state: latest
+    with_items: "{{ deb_package }}"
+    when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
    
   - name: Install lxd in localhost
     include: lxd_install.yml
