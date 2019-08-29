@@ -5,25 +5,26 @@
   ignore_errors: yes
 
   tasks:
-  - name: install common packages to localhost
-    yum:
-      name: "{{ item }}"
-      state: latest
-    with_items: "{{ rpm_package }}"
-    when: ansible_distribution == "CentOS"
-  
-    apt:
-      name: "{{ item }}"
-      state: latest
-    with_items: "{{ deb_package }}"
-    when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
-   
-  - name: Install lxd in localhost
-    include: lxd_install.yml
-  
-  - name: Download and run lxd containers
-    include: lxd_container.yml
-    tags: lxd_container
+    - name: install common packages to localhost
+      yum:
+        name: "{{ item }}"
+        state: latest
+      with_items: "{{ rpm_package }}"
+       when: ansible_distribution == "CentOS"
 
-  - name: install salt-master and salt-minion to localhost
-    include: salt-master-install.yml
+    - name: Install common package in Debian based system 
+      apt:
+        name: "{{ item }}"
+        state: latest
+      with_items: "{{ deb_package }}"
+      when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+   
+    - name: Install lxd in localhost
+      include: lxd_install.yml
+  
+    - name: Download and run lxd containers
+      include: lxd_container.yml
+      tags: lxd_container
+
+    - name: install salt-master and salt-minion to localhost
+      include: salt-master-install.yml
