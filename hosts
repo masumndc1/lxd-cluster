@@ -2,7 +2,19 @@
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 
 # lxd hosts
-10.247.100.139 centos7-salt-minion2
-10.247.100.140 centos7-salt-minion1
-10.247.100.223 debian9-salt-minion3
-10.247.100.1   salt
+10.79.189.130   salt
+10.79.189.130  centos7-ansible2
+10.79.189.158  centos-minion3 
+10.79.189.16   archlinux1    
+10.79.189.184  ubuntu-minion1
+10.79.189.186  debian-minion2
+10.79.189.191  centos7-python1
+10.79.189.20   centos7-ansible1
+10.79.189.209  centos7-salt-minion2
+10.79.189.221  centos7            
+10.79.189.254  ubuntu18-python1  
+10.79.189.43   centos7-python2  
+10.79.189.6    centos7-salt-minion1
+10.79.189.7    centos7-puppet-node2
+10.79.189.8    archlinux-minion4   
+10.79.189.84   centos7-puppet-node1
