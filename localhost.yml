@@ -10,7 +10,7 @@
         name: "{{ item }}"
         state: latest
       with_items: "{{ rpm_package }}"
-       when: ansible_distribution == "CentOS"
+      when: ansible_distribution == "CentOS"
 
     - name: Install common package in Debian based system 
       apt:
