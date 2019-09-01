@@ -13,6 +13,10 @@
     wait_for_ipv4_addresses: true
     timeout: 600
 
+- name: install python in container
+  delegate_to: centos7-python1
+  raw: yum install -y ansible
+
 - name: Create a started centos7-python2 container
   lxd_container:
     name: centos7-python2
@@ -26,6 +30,10 @@
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
+
+- name: install python in container
+  delegate_to: centos7-python2
+  raw: yum install -y ansible
 
 - name: Create a started centos7-puppet-node1 container
   lxd_container:
@@ -41,6 +49,10 @@
     wait_for_ipv4_addresses: true
     timeout: 600
 
+- name: install python in container
+  delegate_to: centos7-puppet-node1
+  raw: yum install -y ansible
+
 - name: Create a started centos7-puppet-node2 container
   lxd_container:
     name: centos7-puppet-node2
@@ -54,6 +66,10 @@
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
+
+- name: install python in container
+  delegate_to: centos7-puppet-node2
+  raw: yum install -y ansible
 
 - name: Create a started centos7-ansible2 container
   lxd_container:
@@ -69,6 +85,10 @@
     wait_for_ipv4_addresses: true
     timeout: 600
 
+- name: install python in container
+  delegate_to: centos7-ansible2
+  raw: yum install -y ansible
+
 - name: Create a started centos7-ansible1 container
   lxd_container:
     name: centos7-ansible1
@@ -82,6 +102,10 @@
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
+
+- name: install python in container
+  delegate_to: centos7-ansible1
+  raw: yum install -y ansible
 
 - name: Create a started centos7-salt-minion1 container
   lxd_container:
@@ -97,6 +121,10 @@
     wait_for_ipv4_addresses: true
     timeout: 600
 
+- name: install python in container
+  delegate_to: centos7-salt-minion1
+  raw: yum install -y ansible
+
 - name: Create a started centos7-salt-minion2 container
   lxd_container:
     name: centos7-salt-minion2
@@ -110,20 +138,28 @@
     profiles: ["default"]
     wait_for_ipv4_addresses: true
     timeout: 600
+
+- name: install python in container
+  delegate_to: centos7-salt-minion2
+  raw: yum install -y ansible
     
-- name: Create a started archlinux1 container
-  lxd_container:
-    name: archlinux1
-    state: started
-    source:
-      type: image
-      mode: pull
-      server: https://images.linuxcontainers.org
-      protocol: lxd
-      alias: archlinux/current/amd64
-    profiles: ["default"]
-    wait_for_ipv4_addresses: true
-    timeout: 600
+#- name: Create a started archlinux1 container
+#  lxd_container:
+#    name: archlinux1
+#    state: started
+#    source:
+#      type: image
+#      mode: pull
+#      server: https://images.linuxcontainers.org
+#      protocol: lxd
+#      alias: archlinux/current/amd64
+#    profiles: ["default"]
+#    wait_for_ipv4_addresses: true
+    #timeout: 600
+
+#- name: install python in container
+#  delegate_to: centos7-salt-minion2
+  #raw: pacman -Sy ansible
 
 - name: Create a started ubuntu18-python1 container
   lxd_container:
@@ -139,3 +175,7 @@
     wait_for_ipv4_addresses: true
     timeout: 600
   tags: ubuntu18-python1
+
+- name: install python in container
+  delegate_to: ubuntu18-python1
+  raw: apt-get install -y ansible
