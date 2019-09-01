@@ -1,0 +1,82 @@
+---
+- name: install salt repo for CentOS
+  yum:
+    name: https://repo.saltstack.com/yum/redhat/salt-repo-latest.el7.noarch.rpm
+    state: latest
+  when: ansible_distribution == "CentOS"
+
+- name: Add salt key for Debian
+  apt_key:
+    url: https://repo.saltstack.com/apt/debian/9/amd64/latest/SALTSTACK-GPG-KEY.pub
+    state: present
+  when: ansible_distribution == "Debian"
+
+- name: Add salt repo for debian 
+  apt_repository:
+    repo: deb http://repo.saltstack.com/apt/debian/9/amd64/latest stretch main
+    state: present
+    filename: saltstack 
+  when: ansible_distribution == "Debian"
+   
+- name: Add salt key for Ubuntu
+  apt_key:
+    url: https://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest/SALTSTACK-GPG-KEY.pub
+    state: present
+  when: ansible_distribution == "Ubuntu"
+
+- name: Add salt repo for Ubuntu
+  apt_repository:
+    repo: deb http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest xenial main
+    state: present
+    filename: saltstack 
+  when: ansible_distribution == "Ubuntu"
+
+- name: install salt-master 
+  yum:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items: "{{ salt_package }}"
+  when: ansible_distribution == "CentOS"
+
+- name: Install salt-minion debian package
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items: "{{ salt_minion_pkg }}"
+  when: ansible_distribution == "Debian"
+
+- name: Install salt-master in Ubuntu
+  apt:
+    name: salt-master
+    state: latest
+  when: ansible_distribution == "Ubuntu"
+
+- name: Install salt-minion in Ubuntu
+  apt:
+    name: salt-minion
+    state: latest
+  when: ansible_distribution == "Ubuntu"
+
+- name: install salt-minion for centos
+  yum:
+    name: "{{ item }}"
+    state: latest
+    update_cache: yes
+  with_items: "{{ salt_minion_package }}"
+  when: ansible_distribution == "CentOS"
+
+- name: Run the salt-master service
+  service:
+    name: salt-master
+    enabled: true
+    state: started
+
+- name: Run the salt-minion service
+  service:
+    name: salt-minion
+    enabled: true
+    state: started
+
+  tags:
+    - salt

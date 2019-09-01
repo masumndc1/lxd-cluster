@@ -47,9 +47,14 @@
 
 - name: Install ansible in Debian based systems.
   apt:
-    name: lxd
+    name: ['lxd', 'zfsutils-linux']
     state: latest
   when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+
+- name: Adding current user in lxd group
+  user:
+    name: masum
+    groups: lxd
 
 - name: Make sure lxd service is up
   service: 
@@ -57,3 +62,7 @@
     state: started
     enabled: yes
   when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+
+- name: Tell user to run lxd init
+  debug:
+    msg: "now please run lxd init manually"

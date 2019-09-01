@@ -1,0 +1,18 @@
+---
+- hosts: master
+  become: yes
+  gather_facts: yes
+  ignore_errors: yes
+
+  tasks:
+    - name: install ansible first
+      include: ansible.yml
+    
+    - name: Install lxd and service lxd
+      include: lxd_install.yml
+ 
+    - name: Download lxd containers
+      include: lxd_container.yml
+   
+    - name: Install salt-master and salt-minion
+      include: salt-in-master.yml

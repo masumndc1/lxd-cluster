@@ -1,0 +1,18 @@
+---
+- hosts: lxd
+  gather_facts: yes
+  ignore_errors: yes
+  become: yes
+  become_user: root
+
+  tasks:
+    - name: copy hosts as /etc/hosts in minions
+      copy:
+        src: hosts
+        dest: /etc/hosts
+    
+    - name: Installing ansible in lxd containers
+      include: ansible.yml
+
+    - name: Install salt-minion packages in lxd minions
+      include: salt-minion-lxd.yml

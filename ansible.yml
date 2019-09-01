@@ -1,0 +1,32 @@
+---
+- name: Install ppa for latest ansible
+  apt_repository: repo='ppa:ansible/ansible'
+  when: ansible_distribution == "Ubuntu" or 
+        ansible_distribution == "Debian"
+
+- name: Install latest ansible in debian based system
+  apt:
+    name: software-properties-common
+    state: present
+  when: ansible_distribution == "Ubuntu" or 
+        ansible_distribution == "Debian"
+
+- name: Install ansible latest version
+  apt:
+    name: ansible
+    update_cache: yes
+    state: latest
+  when: ansible_distribution == "Ubuntu" or 
+        ansible_distribution == "Debian"
+
+- name: Install epel release first in Centos
+  yum:
+    name: epel-release
+    state: latest
+  when: ansible_distribution == "CentOS" 
+
+- name: Install ansible in rpm based systems
+  yum: 
+    name: ansible
+    state: latest
+  when: ansible_distribution == "CentOS" 

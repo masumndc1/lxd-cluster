@@ -1,0 +1,11 @@
+---
+- name: Collecting who is current user
+  command: whoami
+  register: username
+
+- name: Adding user in sudoers.d folder
+  become: yes
+  become_user: root
+  file:
+    path: /etc/sudoers.d/10_{{ username }}
+    content: "{{ username }}   ALL=(ALL)       NOPASSWD: ALL"
