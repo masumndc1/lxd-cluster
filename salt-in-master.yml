@@ -22,27 +22,27 @@
   apt_key:
     url: https://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest/SALTSTACK-GPG-KEY.pub
     state: present
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "16.04"
 
 - name: Add salt repo for Ubuntu16.04
   apt_repository:
     repo: deb http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest xenial main
     state: present
     filename: saltstack 
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "16.04"
 
 - name: Add salt key for Ubuntu18.04
   apt_key:
     url: https://repo.saltstack.com/py3/ubuntu/18.04/amd64/latest/SALTSTACK-GPG-KEY.pub 
     state: present
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "18.04"
 
 - name: Add salt repo for Ubuntu18.04
   apt_repository:
     repo: deb http://repo.saltstack.com/py3/ubuntu/18.04/amd64/lauu
     state: present
     filename: saltstack 
-  when: ansible_distribution == "Ubuntu"
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "18.04"
 
 - name: install salt-master 
   yum:
