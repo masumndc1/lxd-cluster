@@ -51,10 +51,10 @@
     state: latest
   when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
 
-- name: Adding current user in lxd group
-  user:
-    name: masum
-    groups: lxd
+#- name: Adding current user in lxd group
+#  user:
+#    name: masum
+#    groups: lxd
 
 - name: Make sure lxd service is up
   service: 
