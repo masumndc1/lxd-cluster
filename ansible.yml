@@ -4,7 +4,7 @@
   when: ansible_distribution == "Ubuntu" or 
         ansible_distribution == "Debian"
 
-- name: Install latest ansible in debian based system
+- name: Install software properties commanon in debian based system
   apt:
     name: software-properties-common
     state: present
