@@ -18,13 +18,13 @@
     filename: saltstack 
   when: ansible_distribution == "Debian"
    
-- name: Add salt key for Ubuntu
+- name: Add salt key for Ubuntu16.04
   apt_key:
     url: https://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest/SALTSTACK-GPG-KEY.pub
     state: present
   when: ansible_distribution == "Ubuntu"
 
-- name: Add salt repo for Ubuntu
+- name: Add salt repo for Ubuntu16.04
   apt_repository:
     repo: deb http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest xenial main
     state: present
