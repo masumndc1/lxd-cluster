@@ -1,0 +1,9 @@
+---
+- hosts: master
+  become: yes
+  gather_facts: yes
+  ignore_errors: yes
+
+  tasks:
+    - name: Download lxd containers
+      include: lxd_container.yml
