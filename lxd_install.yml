@@ -63,6 +63,6 @@
     enabled: yes
   when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
 
-- name: Tell user to run lxd init
+- name: Tell user to run lxd init if he has not initialize lxd yet
   debug:
-    msg: "now please run lxd init manually"
+    msg: "now please run sudo lxd init manually"
