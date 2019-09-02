@@ -39,7 +39,7 @@
 
 - name: Add salt repo for Ubuntu18.04
   apt_repository:
-    repo: deb http://repo.saltstack.com/py3/ubuntu/18.04/amd64/lauu
+    repo: deb http://repo.saltstack.com/py3/ubuntu/18.04/amd64/latest bionic main
     state: present
     filename: saltstack 
   when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "18.04"
